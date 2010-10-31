@@ -10,9 +10,17 @@ import math
 import sys
 
 def lastmultiple(x, N):
+    """Return the quotient for the largest multiple of x less than N."""
     return math.floor((N - 1) / x)
 
 def summultiples(x, N):
+    """Return the sum of all multiples of x less than N.
+
+    Note that if M = lastmultiple(x, N), the sum S can be written as
+    S = sum([x * k for k in range(1, M)])
+      = x * sum([k for k in range(1, M)])
+      = x * M * (M + 1) / 2
+    """
     M = lastmultiple(x, N)
     return int(x * M * (M + 1) / 2)
 
