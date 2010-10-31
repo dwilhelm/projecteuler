@@ -15,8 +15,8 @@ def ispalindrome(n):
 
 def run(ndigits):
     pals = {}
-    for x in xrange(10 ** (ndigits - 1), 10 ** ndigits):
-        for y in xrange(x, 10 ** ndigits):
+    for x in xrange(10 ** (ndigits - 2) * 11, 10 ** ndigits, 11):
+        for y in xrange(10 ** (ndigits - 1), 10 ** ndigits):
             if ispalindrome(x * y):
                 pals[x * y] = (x, y)
     largest = max(pals.keys())
