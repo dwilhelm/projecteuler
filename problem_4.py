@@ -10,11 +10,7 @@ import sys
 
 
 def ispalindrome(n):
-    digit = str(n)
-    for i in range((len(digit) + 1) / 2):
-        if digit[i] != digit[-i - 1]:
-            return False
-    return True
+    return str(n) == str(n)[::-1]
 
 
 def run(ndigits):
