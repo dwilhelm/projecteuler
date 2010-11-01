@@ -14,6 +14,7 @@ def isprime(n):
     This assumes that primes is a list that includes all primes less
     than or equal to sqrt(n).
     """
+    global primes
     if n == 1:
         return False
     elif n < 4:
@@ -37,9 +38,15 @@ def isprime(n):
 
 def genprimesto(n):
     """Extend the primes list up to, but not including n."""
-    for p in xrange(primes[-1] + 2, n, 2):
-        if isprime(p):
-            primes.append(p)
+    global primes
+    if n <= primes[-1]:
+        return
+    primes = [2] + range(3, n, 2)
+    idx = 1
+    while primes[idx] <= math.sqrt(primes[-1]):
+        p = primes[idx]
+        primes = [x for x in primes if x <= p or x % p]
+        idx += 1
 
 
 def gennewprimes(n):
