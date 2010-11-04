@@ -29,23 +29,26 @@ def getnext(n):
         return n / 2
 
 
-def seqlen(n):
+def getseqlen(seqlen, n):
     """Return the length of the sequence starting with n."""
-    count = 1
-    while n > 1:
-        n = getnext(n)
+    count = 0
+    m = n
+    while m > n - 1:
+        m = getnext(m)
         count += 1
-    return count
+    seqlen[n] = seqlen[m] + count
+    return seqlen[n]
 
 
 def main(N):
-    maxlen = 0
-    for n in xrange(N):
-        nlen = seqlen(n)
+    maxlen = 1
+    seqlen = [0] * (N + 1)
+    for n in xrange(2, N):
+        nlen = getseqlen(seqlen, n)
         if nlen > maxlen:
             maxlen = nlen
             start = n
-            print 'start %d has length %d' % (start, maxlen)
+            print 'start %d has length %d' % (start, seqlen[start])
 
 
 if __name__ == '__main__':
