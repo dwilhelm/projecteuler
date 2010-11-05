@@ -82,3 +82,28 @@ def getprimefactors(n):
         primefactors[n] = 1  # n is prime
     return primefactors
 
+
+def getdivisors(n):
+    """Return a list of the all divisors of the input n."""
+    divisors = [1]
+    pfac = getprimefactors(n)
+    for p in pfac:
+        pnew = []
+        for x in xrange(1, pfac[p] + 1):
+            pnew.extend([d * p**x for d in divisors])
+        divisors.extend(pnew)
+    return sorted(divisors)
+
+
+def isamicable(a):
+    """Return whether or not the input is an amicable number.
+
+    If it is, return its pair. If it isn't, return 0."""
+    def d(n):
+        return sum(getdivisors(n)) - n
+    suma = d(a)
+    if suma > 1 and d(suma) == a and suma != a:
+        return d(a)
+    else:
+        return 0
+
