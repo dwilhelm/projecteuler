@@ -9,7 +9,7 @@ import math
 primes = [2, 3, 5]
 
 def isprime(n):
-    """Return if the input n is prime.
+    """Test that n is a prime number.
 
     If the primes list does not yet include all primes up to sqrt(n),
     it is extended in a naive way until an answer is reached.
@@ -61,7 +61,10 @@ def gennewprimes(n):
 
 
 def getprimefactors(n):
-    """Return the prime factorization of the input n."""
+    """Return the prime factorization of the input n as a dict.
+
+    The returned list has primes as keys with exponents as values.
+    """
     assert n > 1
     primefactors = {}
     count = 0
@@ -84,7 +87,7 @@ def getprimefactors(n):
 
 
 def getdivisors(n):
-    """Return a list of the all divisors of the input n."""
+    """Return a list of the all divisors of n, including 1 and n."""
     divisors = [1]
     pfac = getprimefactors(n)
     for p in pfac:
@@ -95,15 +98,17 @@ def getdivisors(n):
     return sorted(divisors)
 
 
-def isamicable(a):
-    """Return whether or not the input is an amicable number.
+def isamicable(x):
+    """Test that x is an amicable number.
 
-    If it is, return its pair. If it isn't, return 0."""
+    If x is amicable, return its counterpart in the pair.
+    If x isn't amicable, return 0.
+    """
     def d(n):
         return sum(getdivisors(n)) - n
-    suma = d(a)
-    if suma > 1 and d(suma) == a and suma != a:
-        return d(a)
+    y = d(x)
+    if y > 1 and d(y) == x and y != x:
+        return d(x)
     else:
         return 0
 
