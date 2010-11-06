@@ -11,8 +11,8 @@ primes = [2, 3, 5]
 def isprime(n):
     """Return if the input n is prime.
 
-    This assumes that primes is a list that includes all primes less
-    than or equal to sqrt(n).
+    If the primes list does not yet include all primes up to sqrt(n),
+    it is extended in a naive way until an answer is reached.
     """
     global primes
     if n == 1:
