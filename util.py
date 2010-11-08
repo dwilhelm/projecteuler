@@ -112,3 +112,11 @@ def isamicable(x):
     else:
         return 0
 
+
+def binary(x):
+    output = []
+    while x:
+        output.insert(0, str(x & 1))
+        x >>= 1
+    return ''.join(output)
+
