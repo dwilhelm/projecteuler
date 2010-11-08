@@ -15,20 +15,18 @@ def isprime(n):
     it is extended in a naive way until an answer is reached.
     """
     global primes
-    if n == 1:
-        return False
-    elif n < 4:
-        return True
-    elif n & 1 == 0:
-        return False
-    elif n in primes:
+    if n in primes:
         return True
     for p in primes:
         if n % p == 0:
             return False
+    # All primes after 3 are equivalent to either 1 or 5 mod 6.
     p = primes[-1]
-    while primes[-1] < math.floor(math.sqrt(n)):
-        p += 2
+    while primes[-1] < int(math.sqrt(n)):
+        if p % 6 == 1:
+            p += 4
+        else:
+            p += 2
         if isprime(p):
             primes.append(p)
             if n % p == 0:
