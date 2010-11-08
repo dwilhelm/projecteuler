@@ -25,14 +25,35 @@ def getlimit():
     return m - 1
 
 
+def popcache(cache, csize):
+    fac = map(math.factorial, range(10))
+    for x in range(csize):
+        cache[x] = sum([fac[int(d)] for d in str(x)])
+
+
 def main():
     m = getlimit()
-    print m
+    print 'Numbers have %d digits at most' % m
+    csize = 10000
+    cache = [0] * csize
+    popcache(cache, csize)
     total = 0
     for x in xrange(10, 10**m):
         if x % 100000 == 0:
             print 'reached %7d' % x
-        if x == sum([math.factorial(int(d)) for d in str(x)]):
+        if x < csize:
+            thissum = cache[x % csize]
+        else:
+            if x % csize < 10:
+                thissum = cache[x % csize] + 3
+            elif x % csize < 100:
+                thissum = cache[x % csize] + 2
+            elif x % csize < 1000:
+                thissum = cache[x % csize] + 1
+            else:
+                thissum = cache[x % csize]
+            thissum += cache[x / csize]
+        if x == thissum:
             total += x
             print '%d is good, total = %d' % (x, total)
     print 'TOTAL = %d' % total
