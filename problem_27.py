@@ -50,8 +50,10 @@ def main(N):
     primes_ans = []
     util.genprimesto(2 * N)
     print util.primes[-1]
+    blist = [-p for p in util.primes if p < N]
+    blist += [p for p in util.primes if p < N]
     for a in xrange(-N + 1, N):
-        for b in xrange(-N + 1, N):
+        for b in blist:
             primes = primeseq(a, b, N)
             if len(primes) >= maxnum:
                 maxnum = len(primes)
