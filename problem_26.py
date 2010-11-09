@@ -41,12 +41,15 @@ def cyclelen(x):
 def main(n):
     winner = 0
     maxlen = 0
-    for x in xrange(2, n):
+    for x in xrange(n - 1, 1, -1):
         clen = cyclelen(x)
         if clen > maxlen:
             winner = x
             maxlen = clen
             print '%d has cycle length %d' % (winner, maxlen)
+        # The cycle length can't be bigger than the denominator
+        if maxlen and maxlen > x:
+            break
 
 
 if __name__ == '__main__':
