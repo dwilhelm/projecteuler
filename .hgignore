@@ -3,6 +3,7 @@ syntax: glob
 # temp and backup files
 .*.swp
 *.orig
+*.rej
 *~
 ~$*
 
@@ -13,4 +14,4 @@ syntax: glob
 *.zip
 
 # python compiled code
-*.pyc
+*.py[co]
