@@ -14,14 +14,23 @@ def isprime(n):
     it is extended in a naive way until an answer is reached.
     """
     global plist
+    # First check for (non)membership in the existing list.
     if n in plist:
         return True
+    elif n < plist[-1]:
+        return False
+    # Start checking for prime divisors.
+    chklimit = int(math.sqrt(n))
     for p in plist:
         if n % p == 0:
             return False
+        elif p > chklimit:
+            return True
+    # There are not yet enough primes in the list to decide.
+    # Extend the list until a decision can be made.
     # All primes after 3 are equivalent to either 1 or 5 mod 6.
     p = plist[-1]
-    while plist[-1] < int(math.sqrt(n)):
+    while plist[-1] < chklimit:
         if p % 6 == 1:
             p += 4
         else:
