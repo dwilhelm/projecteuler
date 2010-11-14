@@ -14,11 +14,12 @@ leading zeros.)
 
 import math
 import sys
-import util
+
+from util import base
 
 
 def ispal2(x):
-    binary = util.binary(x)
+    binary = base.binary(x)
     return binary == binary[::-1]
 
 

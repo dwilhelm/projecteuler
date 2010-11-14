@@ -23,11 +23,12 @@ the sum of two abundant numbers.
 """
 
 import sys
-import util
+
+from util import divisors
 
 
 def isabundant(x):
-    return x < sum(util.getdivisors(x)[:-1])
+    return x < sum(divisors.getdivisors(x)[:-1])
 
 
 def main(n):

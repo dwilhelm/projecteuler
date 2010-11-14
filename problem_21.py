@@ -15,13 +15,14 @@ Evaluate the sum of all the amicable numbers under 10000.
 """
 
 import sys
-import util
+
+from util import divisors
 
 
 def main(n):
     total = 0
     for n in xrange(2, n):
-        m = util.isamicable(n)
+        m = divisors.isamicable(n)
         if m:
             print n, m
             total += n

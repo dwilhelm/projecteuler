@@ -28,19 +28,20 @@ values of n, starting with n = 0.
 """
 
 import sys
-import util
+
+from util import primes
 
 
 def primeseq(a, b, N):
-    primes = []
+    ps = []
     f = lambda n, a, b: n * n + a * n + b
     for n in xrange(N):
         num = f(n, a, b)
-        if num < 2 or not util.isprime(num):
-            return primes
+        if num < 2 or not primes.isprime(num):
+            return ps
         else:
-            primes.append(num)
-    return primes
+            ps.append(num)
+    return ps
 
 
 def main(N):
@@ -48,19 +49,19 @@ def main(N):
     a_ans = 0
     b_ans = 0
     primes_ans = []
-    util.genprimesto(2 * N)
-    print util.primes[-1]
-    blist = [-p for p in util.primes if p < N]
-    blist += [p for p in util.primes if p < N]
+    primes.genprimesto(2 * N)
+    print primes.plist[-1]
+    blist = [-p for p in primes.plist if p < N]
+    blist += [p for p in primes.plist if p < N]
     for a in xrange(-N + 1, N):
         for b in blist:
-            primes = primeseq(a, b, N)
-            if len(primes) >= maxnum:
-                maxnum = len(primes)
+            ps = primeseq(a, b, N)
+            if len(ps) >= maxnum:
+                maxnum = len(ps)
                 a_ans = a
                 b_ans = b
-                primes_ans = primes
-                print '%4d: a=%d b=%d' % (len(primes), a, b)
+                primes_ans = ps
+                print '%4d: a=%d b=%d' % (len(ps), a, b)
     print primes_ans
     print 'a * b = %d * %d = %d' % (a_ans, b_ans, a_ans * b_ans)
 

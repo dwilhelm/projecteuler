@@ -16,31 +16,32 @@ consecutive primes?
 """
 
 import sys
-import util
+
+from util import primes
 
 
 def getmaxwinlen(n):
     winlen = 1
-    total = util.primes[0]
-    p = util.primes[-1]
+    total = primes.plist[0]
+    p = primes.plist[-1]
     while total <= p:
         winlen += 1
-        total += util.primes[winlen - 1]
+        total += primes.plist[winlen - 1]
     return winlen - 1
 
 
 def primeforlen(winlen):
-    for idx in xrange(len(util.primes) - winlen):
-        p = sum(util.primes[idx : idx + winlen])
-        if p in util.primes:
+    for idx in xrange(len(primes.plist) - winlen):
+        p = sum(primes.plist[idx : idx + winlen])
+        if p in primes.plist:
             return (p, idx, winlen)
-        elif p > util.primes[-1]:
+        elif p > primes.plist[-1]:
             break
     return (0, 0, 0)
 
 
 def main(n):
-    util.genprimesto(n)
+    primes.genprimesto(n)
     maxwinlen = getmaxwinlen(n)
     print 'maxwinlen is %d' % maxwinlen
     for winlen in xrange(maxwinlen, -1, -1):

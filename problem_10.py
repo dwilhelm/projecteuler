@@ -6,12 +6,13 @@ Find the sum of all the primes below two million.
 """
 
 import sys
-import util
+
+from util import primes
 
 
 def main(N):
-    util.genprimesto(N)
-    print reduce(lambda a, b: a + b, util.primes)
+    primes.genprimesto(N)
+    print reduce(lambda a, b: a + b, primes.plist)
 
 
 if __name__ == '__main__':

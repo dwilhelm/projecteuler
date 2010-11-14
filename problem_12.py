@@ -25,11 +25,11 @@ What is the value of the first triangle number to have over five hundred
 divisors?
 """
 
-import util
+from util import primes
 
 
 def numfactors(n):
-    expcount = [x + 1 for x in util.getprimefactors(n).values()]
+    expcount = [x + 1 for x in primes.getprimefactors(n).values()]
     return reduce(lambda a, b: a * b, expcount)
 
 
