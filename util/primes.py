@@ -34,7 +34,10 @@ def isprime(n):
 
 
 def genprimesto(n):
-    """Extend the primes list up to, but not including n."""
+    """Create the primes list up to, but not including n.
+
+    This generates primes using a sieve.
+    """
     global plist
     if n <= plist[-1]:
         return
@@ -47,11 +50,19 @@ def genprimesto(n):
 
 
 def gennewprimes(n):
-    """Extend the primes list by n more entries."""
+    """Extend the primes list by n more entries.
+
+    This function generates primes with the isprime() function and
+    uses the fact that all primes after 3 are equivalent to either
+    1 or 5 mod 6.
+    """
     p = plist[-1]
     added = 0
     while added < n:
-        p += 2
+        if p % 6 == 1:
+            p += 4
+        else:
+            p += 2
         if isprime(p):
             plist.append(p)
             added += 1
