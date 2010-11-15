@@ -2,4 +2,4 @@
 Miscellaneous utilities for Project Euler problems
 """
 
-__all__ = ['base', 'divisors', 'primes']
+__all__ = ['base', 'comb', 'divisors', 'primes']

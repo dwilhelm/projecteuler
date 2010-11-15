@@ -11,7 +11,7 @@ def isprime(n):
     """Test that n is a prime number.
 
     If the primes list does not yet include all primes up to sqrt(n),
-    it is extended in a naive way until an answer is reached.
+    it is extended until an answer is reached.
     """
     global plist
     # First check for (non)membership in the existing list.
@@ -59,12 +59,7 @@ def genprimesto(n):
 
 
 def gennewprimes(n):
-    """Extend the primes list by n more entries.
-
-    This function generates primes with the isprime() function and
-    uses the fact that all primes after 3 are equivalent to either
-    1 or 5 mod 6.
-    """
+    """Extend the primes list by n more entries."""
     p = plist[-1]
     added = 0
     while added < n:

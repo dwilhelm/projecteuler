@@ -20,6 +20,9 @@ def getdivisors(n):
 def isamicable(x):
     """Test that x is an amicable number.
 
+    An amicable pair consists of two integers for which the sum of the
+    proper divisors of each is equal to the other.
+
     If x is amicable, return its counterpart in the pair.
     If x isn't amicable, return 0.
     """
