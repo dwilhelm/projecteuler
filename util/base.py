@@ -17,3 +17,8 @@ def digits(n):
 def numfromdigits(d):
     return int(''.join(map(str, d)))
 
+
+def ispandigital(n):
+    digitlist = digits(n)
+    return sorted(digitlist) == range(1, len(digitlist) + 1)
+
