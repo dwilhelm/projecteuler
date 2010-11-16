@@ -5,6 +5,13 @@ Utilities relating to divisor and divisibility
 import primes
 
 
+def gcd(x, y):
+    """Return the greatest common divisor of inputs x and y."""
+    while y:
+        x, y = y, x % y
+    return x
+
+
 def getdivisors(n):
     """Return a list of the all divisors of n, including 1 and n."""
     divisors = [1]
