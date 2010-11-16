@@ -9,3 +9,11 @@ def binary(x):
         x >>= 1
     return ''.join(output)
 
+
+def digits(n):
+    return [int(x) for x in list(str(n))]
+
+
+def numfromdigits(d):
+    return int(''.join(map(str, d)))
+
