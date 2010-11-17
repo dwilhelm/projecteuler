@@ -28,8 +28,6 @@ def isgood(num):
     num = str(num)
     if int(num[2:5]) % 3 != 0:
         return False
-    if int(num[3:6]) % 5 != 0:
-        return False
     if int(num[4:7]) % 7 != 0:
         return False
     if int(num[5:8]) % 11 != 0:
@@ -43,13 +41,24 @@ def isgood(num):
 
 def main():
     total = 0
-    for p in comb.permoflen(10, range(10)):
+    # d6 is either 0 or 5
+    for p in comb.permoflen(9, [1,2,3,4,6,7,8,9,0]):
         if p[3] & 1:
             continue
-        p = base.numfromdigits(p)
-        if isgood(p):
-            total += p
-            print p
+        p.insert(5, 5)
+        num = base.numfromdigits(p)
+        if isgood(num):
+            total += num
+            print num
+        p.remove(5)
+        # swap the 0 and 5 and retry
+        idx = p.index(0)
+        p[idx] = 5
+        p[5] = 0
+        num = base.numfromdigits(p)
+        if isgood(num):
+            total += num
+            print num
     print total
 
 
