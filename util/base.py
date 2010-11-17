@@ -15,7 +15,10 @@ def digits(n):
 
 
 def numfromdigits(d):
-    return int(''.join(map(str, d)))
+    if d:
+        return int(''.join(map(str, d)))
+    else:
+        return 0
 
 
 def ispandigital(n):
