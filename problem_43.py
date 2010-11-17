@@ -42,19 +42,12 @@ def isgood(num):
 def main():
     total = 0
     # d6 is either 0 or 5
+    # Since 11 divides d6d7d8 and d7 and d8 can't be the same digit,
+    # d6 can't be 0, so it must be 5.
     for p in comb.permoflen(9, [1,2,3,4,6,7,8,9,0]):
         if p[3] & 1:
             continue
         p.insert(5, 5)
-        num = base.numfromdigits(p)
-        if isgood(num):
-            total += num
-            print num
-        p.remove(5)
-        # swap the 0 and 5 and retry
-        idx = p.index(0)
-        p[idx] = 5
-        p[5] = 0
         num = base.numfromdigits(p)
         if isgood(num):
             total += num
