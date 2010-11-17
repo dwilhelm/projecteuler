@@ -21,7 +21,13 @@ def numfromdigits(d):
         return 0
 
 
-def ispandigital(n):
+def ispandigital(n, start=1):
+    """Test if the input n is pandigital.
+
+    Let me be the number of digits of n.
+    If start is 1 (default), then the test is if n is 1 to m pandigital.
+    If start is 0, then the test is if n is 0 to m-1 pandigital.
+    """
     digitlist = digits(n)
-    return sorted(digitlist) == range(1, len(digitlist) + 1)
+    return sorted(digitlist) == range(start, len(digitlist) + start)
 
