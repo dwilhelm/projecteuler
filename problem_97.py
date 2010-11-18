@@ -13,12 +13,18 @@ contains 2,357,207 digits: 28433×2^(7830457)+1.
 Find the last ten digits of this prime number.
 """
 
+import pdb
+
+from util import ops
+
+
 def main():
-    num = 28433
-    for x in xrange(7830457):
-        num <<= 1
-        num %= 10**10
-    print num + 1
+    base = 2
+    exponent = 7830457
+    modulus = 10**10
+    num = ops.exp(base, exponent, modulus)
+    print '%d ** %d == %d mod %d' % (base, exponent, num, modulus)
+    print (num * 28433 + 1) % modulus
 
 
 if __name__ == '__main__':
