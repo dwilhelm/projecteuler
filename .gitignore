@@ -1,5 +1,3 @@
-syntax: glob
-
 # temp and backup files
 .*.swp
 *.orig
